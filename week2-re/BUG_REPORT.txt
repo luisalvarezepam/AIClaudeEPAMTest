@@ -1,0 +1,202 @@
+===============================================
+CALCULATOR MODULE - BUG ANALYSIS REPORT
+===============================================
+Date: 2025-07-02
+File: calculator.py
+Analysis Tool: Python error detection and edge case testing
+
+===============================================
+SUMMARY OF IDENTIFIED BUGS
+===============================================
+
+Total Bugs Found: 8
+Severity Levels: 
+- CRITICAL: 5 bugs
+- HIGH: 2 bugs  
+- MEDIUM: 1 bug
+
+===============================================
+DETAILED BUG ANALYSIS
+===============================================
+
+BUG #1: DIVISION BY ZERO
+-------------------------
+Location: divide() function (line 10-11)
+Severity: CRITICAL
+Error Type: ZeroDivisionError
+Description: Function does not handle division by zero
+Test Case: divide(10, 0)
+Expected: Error handling or special return value
+Actual: ZeroDivisionError: division by zero
+Impact: Application crash when dividing by zero
+
+Code Snippet:
+def divide(a, b):
+    return a / b  # <-- No zero check
+
+BUG #2: EMPTY LIST IN CALCULATE_AVERAGE
+---------------------------------------
+Location: calculate_average() function (line 13-17)
+Severity: CRITICAL
+Error Type: ZeroDivisionError
+Description: Function crashes when given empty list
+Test Case: calculate_average([])
+Expected: Error handling or return None/NaN
+Actual: ZeroDivisionError: division by zero
+Impact: Application crash with empty data sets
+
+Code Snippet:
+def calculate_average(numbers):
+    total = 0
+    for num in numbers:
+        total += num
+    return total / len(numbers)  # <-- len([]) = 0, causes division by zero
+
+BUG #3: EMPTY LIST IN FIND_MAXIMUM
+----------------------------------
+Location: find_maximum() function (line 25-30)
+Severity: CRITICAL
+Error Type: IndexError
+Description: Function crashes when given empty list
+Test Case: find_maximum([])
+Expected: Error handling or return None
+Actual: IndexError: list index out of range
+Impact: Application crash with empty data sets
+
+Code Snippet:
+def find_maximum(numbers):
+    max_val = numbers[0]  # <-- Crashes if numbers is empty
+    for i in range(len(numbers)):
+        if numbers[i] > max_val:
+            max_val = numbers[i]
+    return max_val
+
+BUG #4: NEGATIVE NUMBER IN FACTORIAL
+------------------------------------
+Location: factorial() function (line 19-23)
+Severity: CRITICAL
+Error Type: RecursionError
+Description: Function enters infinite recursion with negative numbers
+Test Case: factorial(-5)
+Expected: Error handling or return error message
+Actual: RecursionError: maximum recursion depth exceeded
+Impact: Stack overflow and application crash
+
+Code Snippet:
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n - 1)  # <-- No negative number check
+
+BUG #5: STACK OVERFLOW IN FACTORIAL
+-----------------------------------
+Location: factorial() function (line 19-23)
+Severity: CRITICAL
+Error Type: RecursionError
+Description: Recursive implementation causes stack overflow for large numbers
+Test Case: factorial(2000)
+Expected: Use iterative approach or raise appropriate error
+Actual: RecursionError: maximum recursion depth exceeded
+Impact: Stack overflow and application crash with large inputs
+
+BUG #6: SILENT DATA LOSS IN PROCESS_DATA
+----------------------------------------
+Location: process_data() function (line 32-39)
+Severity: HIGH
+Error Type: Logic Bug
+Description: Zero values are silently dropped from output
+Test Case: process_data([2, -3, 0, 4, -1, 0, 5])
+Expected: All values processed according to rules
+Actual: Zero values are ignored/dropped (7 inputs → 5 outputs)
+Impact: Data integrity issues, silent data loss
+
+Code Snippet:
+def process_data(data_list):
+    results = []
+    for item in data_list:
+        if item > 0:
+            results.append(item * 2)
+        elif item < 0:
+            results.append(abs(item))
+        # <-- Missing else clause for item == 0
+    return results
+
+BUG #7: TYPE CONCATENATION IN ARITHMETIC
+----------------------------------------
+Location: All arithmetic functions (add, subtract, multiply, divide)
+Severity: HIGH
+Error Type: Logic Bug
+Description: String inputs cause concatenation instead of mathematical operation
+Test Case: add("5", "3")
+Expected: Type error or conversion to numbers
+Actual: Returns "53" (string concatenation)
+Impact: Incorrect results with wrong data types
+
+BUG #8: TYPE ERROR IN LIST PROCESSING
+-------------------------------------
+Location: calculate_average() and potentially find_maximum()
+Severity: MEDIUM
+Error Type: TypeError
+Description: Mixed data types in lists cause type errors
+Test Case: calculate_average([1, 2, "3", 4, 5])
+Expected: Type validation or conversion
+Actual: TypeError: unsupported operand type(s) for +=: 'int' and 'str'
+Impact: Application crash with inconsistent data types
+
+===============================================
+ROOT CAUSE ANALYSIS
+===============================================
+
+Primary Issues:
+1. LACK OF INPUT VALIDATION: No type checking or boundary validation
+2. MISSING ERROR HANDLING: No try-catch blocks or defensive programming
+3. POOR ALGORITHM CHOICES: Recursive factorial, inefficient max finding
+4. INCOMPLETE LOGIC: Missing edge cases in conditional statements
+
+Contributing Factors:
+- No unit tests to catch edge cases
+- No documentation specifying expected input types
+- No bounds checking for mathematical operations
+- No null/empty checks for list operations
+
+===============================================
+IMPACT ASSESSMENT
+===============================================
+
+Operational Risk: HIGH
+- Multiple critical bugs that cause application crashes
+- Data integrity issues with silent data loss
+- Unexpected behavior with wrong input types
+
+User Experience: POOR
+- Application crashes are user-facing
+- No meaningful error messages
+- Unpredictable behavior with edge cases
+
+Maintainability: LOW
+- Bugs indicate lack of defensive programming practices
+- Missing error handling makes debugging difficult
+- No clear specification of expected behavior
+
+===============================================
+RECOMMENDATIONS
+===============================================
+
+Immediate Actions Required:
+1. Add input validation to all functions
+2. Implement proper error handling with try-catch blocks
+3. Fix recursive factorial with iterative approach
+4. Add zero handling in process_data function
+5. Implement comprehensive unit testing
+
+Long-term Improvements:
+1. Add type hints for better code documentation
+2. Create comprehensive test suite with edge cases
+3. Add logging for better debugging
+4. Consider using built-in functions where appropriate (max, sum)
+5. Add docstrings with expected input/output specifications
+
+===============================================
+END OF REPORT
+===============================================
