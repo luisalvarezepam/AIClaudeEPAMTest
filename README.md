@@ -1,140 +1,69 @@
-<<<<<<< feature/interactive-components
-# React Interactive Hello World App
+# AI Claude EPAM Learning Repository
 
-A simple React application demonstrating interactive form components including dropdowns, checkboxes, radio buttons, and other form elements.
+This repository contains weekly coding exercises and projects for learning and practice with Claude AI assistance.
 
-## Features
+## Repository Structure
 
-- **Hello World Component**: Simple greeting display
-- **Interactive Form**: Comprehensive form with multiple input types:
-  - Text input for name
-  - Dropdown for country selection
-  - Radio buttons for gender selection
-  - Checkboxes for hobby selection
-  - Color picker for favorite color
-  - Range slider for experience level
-  - Newsletter subscription checkbox
-  - Real-time form data display
+```
+├── week1/                 # Week 1 - React Hello World Application
+│   ├── src/              # React application source files
+│   ├── public/           # Static assets
+│   ├── package.json      # Node.js dependencies
+│   ├── webpack.config.js # Build configuration
+│   ├── CLAUDE.md         # Claude-specific guidance for week1
+│   └── README.md         # Week 1 specific documentation
+├── week2/                # Week 2 - Python Calculator with Bug
+│   └── calculator.py     # Calculator with intentional bug for debugging
+├── README.md             # This file - main repository documentation
+└── .gitignore           # Git ignore patterns
+
+```
+
+## Week 1 - React Interactive Hello World
+
+A React application demonstrating:
+- Basic React components
+- Interactive forms with various input types
+- Webpack build configuration
+- Modern JavaScript (ES6+) and JSX
+
+### Getting Started with Week 1
+```bash
+cd week1
+npm install
+npm start
+```
+
+## Week 2 - Python Calculator Debugging Exercise
+
+A Python calculator with various mathematical functions that contains an intentional bug for debugging practice.
+
+### Running Week 2
+```bash
+cd week2
+python calculator.py
+```
+
+**Challenge**: Find and fix the bug in the calculator!
 
 ## Technologies Used
 
-- React 18.2.0
-- Webpack 5 with Babel transpilation
-- HTML5 form elements
-- CSS-in-JS styling
+- **Week 1**: React 18.2.0, Webpack 5, Babel, HTML5, CSS-in-JS
+- **Week 2**: Python 3.x
 
-## Getting Started
+## Learning Objectives
 
-### Prerequisites
-
-- Node.js (version 14 or higher)
-- npm or yarn
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/luisalvarezepam/AIClaudeEPAMTest.git
-   cd AIClaudeEPAMTest
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Start the development server:
-   ```bash
-   npm start
-   ```
-
-4. Open your browser and navigate to `http://localhost:3000`
-
-### Build for Production
-
-To create a production build:
-
-```bash
-npm run build
-```
-
-The build artifacts will be stored in the `dist/` directory.
-
-## Project Structure
-
-```
-src/
-├── App.js              # Main application component
-├── HelloWorld.jsx      # Simple greeting component
-├── InteractiveForm.jsx # Interactive form with various input types
-└── index.js           # Application entry point
-
-public/
-└── index.html         # HTML template
-
-webpack.config.js      # Webpack configuration
-package.json          # Project dependencies and scripts
-```
-
-## Form Components
-
-The interactive form includes the following components:
-
-- **Text Input**: Basic text input for user's name
-- **Select Dropdown**: Country selection with multiple options
-- **Radio Buttons**: Gender selection (Male, Female, Other)
-- **Checkboxes**: Multiple hobby selection (Reading, Gaming, Sports, Music, Cooking, Travel)
-- **Color Picker**: HTML5 color input for favorite color selection
-- **Range Slider**: Experience level from Beginner (0) to Expert (10)
-- **Checkbox**: Newsletter subscription toggle
-
-All form data is managed with React hooks and displays real-time updates as users interact with the form.
-
-## Development
-
-This project uses:
-- Webpack Dev Server for hot reloading
-- Babel for JSX and ES6+ transpilation
-- ESLint configuration for code quality
+1. **Week 1**: Learn React fundamentals, component structure, and modern build tools
+2. **Week 2**: Practice debugging skills and understand common programming errors
 
 ## Contributing
 
+This is a learning repository. Feel free to:
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+2. Create feature branches for experiments
+3. Submit pull requests with improvements or fixes
+4. Report issues or suggest enhancements
 
 ## License
 
 This project is licensed under the MIT License.
-=======
-# CLAUDE.md
-
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
-## Project Overview
-
-This is a simple React "Hello World" application built with Webpack and Babel. The project demonstrates basic React component structure and build configuration.
-
-## Common Commands
-
-- `npm install` - Install dependencies
-- `npm start` - Start development server (opens at http://localhost:3000)
-- `npm run build` - Build for production (outputs to `dist/` directory)
-
-## Architecture
-
-### Project Structure
-- `src/index.js` - Application entry point, renders App component
-- `src/App.js` - Main application component that imports and renders HelloWorld
-- `src/HelloWorld.jsx` - Simple React component displaying "Hello, World!"
-- `public/index.html` - HTML template with root div
-- `webpack.config.js` - Webpack configuration with Babel for JSX/ES6 transpilation
-
-### Build System
-- Uses Webpack 5 with webpack-dev-server for development
-- Babel transpiles JSX and modern JavaScript
-- HtmlWebpackPlugin generates HTML with bundled scripts
-- Development server runs on port 3000 with hot reloading
->>>>>>> main
